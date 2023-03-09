@@ -1,0 +1,42 @@
+<div class="main-div">
+  <form (submit)="onSubmit()">
+    <label>
+      <h4>Question</h4>
+      <input type="text" name="question" [(ngModel)]="question">
+    </label>
+
+    <label>
+      <h4>Choice A</h4>
+      <input type="text" name="choiseA" [(ngModel)]="a">
+    </label>
+    
+    <label>
+      <h4>Choice B</h4>
+      <input type="text" name="choiseB" [(ngModel)]="b">
+    </label>
+    
+    <label>
+      <h4>Choice C</h4>
+      <input type="text" name="choiseC" [(ngModel)]="c">
+    </label>
+    
+    <label>
+      <h4>Choice D</h4>
+      <input type="text" name="choiseD" [(ngModel)]="d">
+    </label>
+
+    <label>
+      <h4>Correct Answer</h4>
+      <select [(ngModel)]="correct" [ngModelOptions]="{standalone: true}">
+        <option value="a">A</option>
+        <option value="b">B</option>
+        <option value="c">C</option>
+        <option value="d">D</option>
+      </select>
+    </label>
+    
+    <br>
+    
+    <button class="add-button" type="submit">Add question</button>
+  </form>
+</div>

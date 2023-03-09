@@ -1,0 +1,8 @@
+<div class="question-list-wrapper">
+    <div class="question-list">
+      <div *ngFor="let question of quizData" class="question-item">
+        <div class="question-text">{{ question.question }}</div>
+        <button class="question-delete" (click)="onDeleteQuestion(question)" [@fadeAnimation]>Delete</button>
+      </div>
+    </div>
+  </div>
