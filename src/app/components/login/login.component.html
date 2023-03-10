@@ -1,26 +1,60 @@
-<form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
-    <label>
-        <p>First Name:</p>
-        <input type="text" formControlName="firstName" />
-    </label>
-    <label>
-        <p>Last Name:</p>
-        <input type="text" formControlName="lastName" />
-    </label>
-    <label>
-        <p>Email:</p>
-        <input type="email" formControlName="email" />
-    </label>
-    <label>
-        <p>Password:</p>
-        <input type="password" formControlName="password" />
-    </label>
-    <label>
-        <p>Confirm Password:</p>
-        <input type="password" formControlName="confirmPassword" />
-    </label>
-    <button type="submit" [disabled]="registrationForm.invalid">
-        Register
-    </button>
-  </form>
-  
+<div class="body">
+	<div class="container">
+    
+		<form action="#" class="login active" (submit)="onLoginFormSubmit($event)">
+			<h2 class="title">Login with your account</h2>
+			<div class="form-group">
+				<label for="email">Email</label>
+				<div class="input-group">
+					<input type="email" id="email1" placeholder="Email address" [(ngModel)]="loginEmail" [ngModelOptions]="{standalone: true}">
+					<i class='bx bx-envelope'></i>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="password">Password</label>
+				<div class="input-group">
+					<input type="password" pattern=".{8,}" id="passwordForLogin" placeholder="Your password" [(ngModel)]="loginPassword" [ngModelOptions]="{standalone: true}">
+					<i class='bx bx-lock-alt' ></i>
+				</div>
+				<span class="help-text">At least 8 characters</span>
+			</div>
+
+			<button type="submit" class="btn-submit">Login</button>
+			<a href="#">Forgot password?</a>
+			<p>I don't have an account. <a href="#" (click)="switchForm('register', $event)">Register</a></p>
+		</form>
+
+		<form action="#" class="register" (submit)="onRegisterFormSubmit($event)">
+			<h2 class="title">Register your account</h2>
+      <div class="form-group">
+				<label for="email">Email</label>
+				<div class="input-group">
+					<input type="email" id="email2" placeholder="Email address" [(ngModel)]="registerEmail" [ngModelOptions]="{standalone: true}">
+					<i class='bx bx-envelope'></i>
+				</div>
+			</div>
+      
+      <div class="form-group">
+				<label for="password">Password</label>
+				<div class="input-group">
+					<input type="password" pattern=".{8,}" id="passwordForRegistr" placeholder="Your password" [(ngModel)]="registerPassword" [ngModelOptions]="{standalone: true}" (input)="onRegisterPasswordInput($event)">
+					<i class='bx bx-lock-alt' ></i>
+				</div>
+				<span class="help-text">At least 8 characters</span>
+			</div>
+			
+      <div class="form-group">
+				<label for="confirm-pass">Confirm password</label>
+				<div class="input-group">
+					<input type="password" id="confirm-pass" placeholder="Enter password again" [(ngModel)]="registerConfirmPassword" [ngModelOptions]="{standalone: true}">
+					<i class='bx bx-lock-alt' ></i>
+				</div>
+				<span class="help-text">Confirm password must be same with password</span>
+			</div>
+			
+      <button type="submit" class="btn-submit">Register</button>
+			<p>I already have an account. <a href="#" (click)="switchForm('login', $event)">Login</a></p>
+		</form>
+	</div>
+</div>

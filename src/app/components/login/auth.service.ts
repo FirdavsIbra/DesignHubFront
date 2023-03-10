@@ -1,33 +1,42 @@
 import { Injectable } from '@angular/core';
-
 import { Observable, of } from 'rxjs';
-import { tap, delay } from 'rxjs/operators';
 
 @Injectable({
-   providedIn: 'root'
+  providedIn: 'root'
 })
 export class AuthService {
+  private registeredUsers: any[] = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+  private currentUser: any;
+  public isLoggedIn : boolean = false;
+  public email : string = '';
 
-   isUserLoggedIn: boolean = false;
+  constructor() { }
 
-   login(userName: string, password: string): Observable<boolean> {
-      console.log(userName);
-      console.log(password);
-      this.isUserLoggedIn = userName == 'admin' && password == 'admin';
-      localStorage.setItem('isUserLoggedIn', this.isUserLoggedIn ? "true" : "false"); 
+  register(user: any): void {
+    this.registeredUsers.push(user);
+    localStorage.setItem('registeredUsers', JSON.stringify(this.registeredUsers));
+    console.log(this.registeredUsers);
+  }
 
-   return of(this.isUserLoggedIn).pipe(
-      delay(1000),
-      tap(val => { 
-         console.log("Is User Authentication is successful: " + val); 
-      })
-   );
-   }
+  login(email: string, password: string): Observable<boolean> {
+    const user = this.registeredUsers.find(u => u.email === email && u.password === password);
+    if (user) {
+      this.currentUser = user;
+      localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+      this.isLoggedIn = true;
+      this.email = user.email;
+      return of(true);
+    }
+    return of(false);
+  }
 
-   logout(): void {
-   this.isUserLoggedIn = false;
-      localStorage.removeItem('isUserLoggedIn'); 
-   }
+  logout(): void {
+    this.currentUser = null;
+    this.isLoggedIn = false;
+    localStorage.removeItem('currentUser');
+  }
 
-   constructor() { }
+  getCurrentUser(): any {
+    return JSON.parse(localStorage.getItem('currentUser') || '{}');
+  }
 }
