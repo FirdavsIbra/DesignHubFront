@@ -1,0 +1,58 @@
+<div class="body">
+	<div class="container">
+    
+		<form [formGroup]="loginForm" class="login active" (submit)="onLogin()">
+			<h2 class="title">Login with your account</h2>
+			<div class="form-group">
+				<label for="email">Email</label>
+				<div class="input-group">
+					<input type="email" placeholder="Email address" formControlName="email">
+					<i class='bx bx-envelope'></i>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="password">Password</label>
+				<div class="input-group">
+					<input type="password" pattern=".{8,}" formControlName="password" placeholder="Your password">
+					<i class='bx bx-lock-alt' ></i>
+				</div>
+				<span class="help-text">At least 8 characters</span>
+			</div>
+
+			<button type="submit" class="btn-submit">Login</button>
+			<a>Forgot password?</a>
+			<p>I don't have an account. <a href="#" (click)="switchForm('register', $event)">Register</a></p>
+		</form>
+
+		<form [formGroup]="registerForm" class="register" (submit)="onRegister()">
+			<h2 class="title">Register your account</h2>
+			<div class="form-group">
+				<label for="name">Name</label>
+				<div class="input-group">
+					<input type="text" placeholder="Name" formControlName="name">
+					<i class='bx bx-envelope'></i>
+				</div>
+			</div>
+      		<div class="form-group">
+				<label for="email">Email</label>
+				<div class="input-group">
+					<input type="email" placeholder="Email address" formControlName="email">
+					<i class='bx bx-envelope'></i>
+				</div>
+			</div>
+      
+      		<div class="form-group">
+				<label for="password">Password</label>
+				<div class="input-group">
+					<input type="password" pattern=".{8,}" formControlName="password" placeholder="Your password">
+					<i class='bx bx-lock-alt' ></i>
+				</div>
+				<span class="help-text">At least 8 characters</span>
+			</div>
+			
+      	<button type="submit" class="btn-submit">Register</button>
+			<p>I already have an account. <a href="#" (click)="switchForm('login', $event)">Login</a></p>
+		</form>
+	</div>
+</div>

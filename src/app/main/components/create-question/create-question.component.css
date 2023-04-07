@@ -2,7 +2,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 50px;
+  width: auto;
+  padding: 30px;
+  margin: 30px
 }
 
 h2{

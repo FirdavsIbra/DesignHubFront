@@ -2,32 +2,32 @@
   <form (submit)="onSubmit()">
     <label>
       <h4>Question</h4>
-      <input type="text" name="question" [(ngModel)]="question">
+      <input type="text" name="question" [(ngModel)]="newQuestion.question">
     </label>
 
     <label>
       <h4>Choice A</h4>
-      <input type="text" name="choiseA" [(ngModel)]="a">
+      <input type="text" name="choiseA" [(ngModel)]="newQuestion.a">
     </label>
     
     <label>
       <h4>Choice B</h4>
-      <input type="text" name="choiseB" [(ngModel)]="b">
+      <input type="text" name="choiseB" [(ngModel)]="newQuestion.b">
     </label>
     
     <label>
       <h4>Choice C</h4>
-      <input type="text" name="choiseC" [(ngModel)]="c">
+      <input type="text" name="choiseC" [(ngModel)]="newQuestion.c">
     </label>
     
     <label>
       <h4>Choice D</h4>
-      <input type="text" name="choiseD" [(ngModel)]="d">
+      <input type="text" name="choiseD" [(ngModel)]="newQuestion.d">
     </label>
 
     <label>
       <h4>Correct Answer</h4>
-      <select [(ngModel)]="correct" [ngModelOptions]="{standalone: true}">
+      <select [(ngModel)]="newQuestion.correct" [ngModelOptions]="{standalone: true}">
         <option value="a">A</option>
         <option value="b">B</option>
         <option value="c">C</option>

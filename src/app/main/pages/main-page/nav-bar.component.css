@@ -1,3 +1,9 @@
+.main-page-contents{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+}
 
 .sidebar{
     position: fixed;
@@ -8,8 +14,9 @@
     padding: 10px 14px;
     background: var(--sidebar-color);
     transition: var(--tran-05);
-    z-index: 100;  
+    z-index: 100;
 }
+
 .sidebar.close{
     width: 88px;
 }
@@ -62,10 +69,12 @@
     display: flex;
     align-items: center;
 }
+
 .sidebar header .logo-text{
     display: flex;
     flex-direction: column;
 }
+
 header .image-text .name {
     margin-top: 2px;
     font-size: 18px;

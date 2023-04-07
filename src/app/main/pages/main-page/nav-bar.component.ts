@@ -13,18 +13,17 @@ export class NavBarComponent implements OnInit {
   modeSwitch!: HTMLElement;
   modeText!: HTMLElement;
 
-  constructor() {
+  public constructor() {
     this.body = document.querySelector('body')!;
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.sidebar = this.body.querySelector('nav')!;
     this.toggle = this.body.querySelector('.toggle')!;
     this.searchBtn = this.body.querySelector('.search-box')!;
     this.modeSwitch = this.body.querySelector('.toggle-switch')!;
     this.modeText = this.body.querySelector('.mode-text')!;
 
-    // check if the mode has been set before
     if (localStorage.getItem('mode') === 'dark') {
       this.body.classList.add('dark');
       this.modeText.innerText = 'Light mode';
