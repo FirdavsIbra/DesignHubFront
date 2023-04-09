@@ -1,15 +1,8 @@
 import { Component } from '@angular/core';
-import { QuestionComponent, Quiz } from '../question/question.component';
+import { Question } from '../../models/question';
+import { QuestionService } from '../../services/question.service';
+import { IQuestion } from '../../interfaces/question.interface';
 
-
-export interface NewQuestion {
-  question: string;
-  a: string;
-  b: string;
-  c: string;
-  d: string;
-  correct: string;
-}
 
 @Component({
   selector: 'app-create-question',
@@ -17,7 +10,8 @@ export interface NewQuestion {
   styleUrls: ['./create-question.component.css']
 })
 export class CreateQuestionComponent {
-  newQuestion: NewQuestion = {
+  public newQuestion: Question = {
+    id: 0,
     question: '',
     a: '',
     b: '',
@@ -25,17 +19,42 @@ export class CreateQuestionComponent {
     d: '',
     correct: 'a'
   };
+  public questions: IQuestion[] = this.questionService.getAll();
+  public maxId!: number;
 
-  constructor(private questionComponent: QuestionComponent){
-  }
+  public constructor(private questionService: QuestionService) { }
 
-  onSubmit() {
+  public onSubmit() {
     if (!this.newQuestion.question || !this.newQuestion.a || !this.newQuestion.b || !this.newQuestion.c || !this.newQuestion.d) {
       alert('Please fill out all fields');
       return;
     }
 
-    const newQuestion: Quiz = {
+    if (this.questions.length > 0) {
+      this.maxId = this.questions.reduce((prev, current) => (prev.id > current.id ? prev : current)).id;
+    }
+    else{
+      this.maxId = 1;
+    }
+    
+    switch (this.newQuestion.correct) {
+      case 'a':
+        this.newQuestion.correct = this.newQuestion.a;
+        break;
+      case 'b':
+        this.newQuestion.correct = this.newQuestion.b;
+        break;
+      case 'c':
+        this.newQuestion.correct = this.newQuestion.c;
+        break;
+      case 'd':
+        this.newQuestion.correct = this.newQuestion.d;
+        break;
+      default:
+        break;
+    }
+    const newQuestion: Question = {
+      id: this.maxId + 1,
       question: this.newQuestion.question,
       a: this.newQuestion.a,
       b: this.newQuestion.b,
@@ -44,9 +63,9 @@ export class CreateQuestionComponent {
       correct: this.newQuestion.correct
     };
 
-    this.questionComponent.quizes.push(newQuestion);
-    const quizDataString = JSON.stringify(this.questionComponent.quizes);
-    localStorage.setItem('quizData', quizDataString);
+    console.log(newQuestion);
+
+    this.questionService.create(newQuestion);
 
     this.newQuestion.question = '';
     this.newQuestion.a = '';  

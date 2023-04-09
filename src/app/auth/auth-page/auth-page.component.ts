@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { PasswordValidator } from '../validators/password-validator';
 
 export interface IUser {
   name: string,

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { QuestionComponent, Quiz } from '../question/question.component';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { QuestionService } from '../../services/question.service';
+import { IQuestion } from '../../interfaces/question.interface';
 
 @Component({
   selector: 'app-delete-question',
@@ -21,22 +22,12 @@ import { trigger, transition, style, animate } from '@angular/animations';
   
 })
 export class DeleteQuestionComponent {
-  quizData: Quiz[] = [];
 
-  constructor(private questionComponent: QuestionComponent) {
-    const quizDataString = localStorage.getItem('quizData');
-    if (quizDataString) {
-      this.quizData = JSON.parse(quizDataString);
-    }
-  }
+  public constructor(private questionService: QuestionService) { }
 
+  public questions: IQuestion[] = this.questionService.getAll();
 
-  onDeleteQuestion(question: Quiz) {
-    const index = this.quizData.indexOf(question);
-    if (index !== -1) {
-      this.quizData.splice(index, 1);
-      const quizDataString = JSON.stringify(this.quizData);
-      localStorage.setItem('quizData', quizDataString);
-    }
+  public onDeleteQuestion(question: IQuestion) {
+    this.questionService.delete(question);
   }
 }

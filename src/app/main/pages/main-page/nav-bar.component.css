@@ -269,3 +269,10 @@ body.dark .switch::before{
 body.dark .home .text{
     color: var(--text-color);
 }
+
+.main-page-contents{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
