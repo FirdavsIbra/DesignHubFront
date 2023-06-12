@@ -5,7 +5,7 @@ import { MainModule } from './main/main.module';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'auth',
+    redirectTo: 'auth/login',
     pathMatch: 'full'
   },
   { 
@@ -18,7 +18,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'auth',
+    redirectTo: 'auth/login',
     pathMatch: 'full'
   }
 ];

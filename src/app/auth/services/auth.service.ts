@@ -1,6 +1,7 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IUser, User } from '../auth-page/auth-page.component';
 import { Router } from '@angular/router';
+import { IUser } from 'src/app/models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -8,25 +9,20 @@ import { Router } from '@angular/router';
 export class AuthService {
   public user!: IUser;
 
-  public constructor(private router: Router) { }
+  public constructor(private router: Router, private http: HttpClient) { }
 
-  public register(email: string, password: string): void {
-    const user: IUser = new User();
-    user.email = email;
-    user.password = password;
-    console.log(user);
-    const users: IUser[] = JSON.parse(localStorage.getItem('users') || '[]');
-    console.log(users);
-
-    if (users.some(u => u.email === user.email)){
-      console.log('User with this email already exists');
-      alert('User with this email already exists');
-      return;
-    }
-    
-    users.push(user);
-    localStorage.setItem('users', JSON.stringify(users));
-    this.router.navigateByUrl('/main');
+  public register(_email: string, _password: string): void {
+    const apiUrl = `https://localhost:7140/api/auth/register?Username=${_email}&Password=${_password}`;
+    this.http.post(apiUrl, null).subscribe({
+      next: (response:any) => {
+        console.log(response);
+      },
+      error: (error: any) => {
+        console.error(error);
+        alert("This username already taken.");
+      }
+    });
+    // this.router.navigateByUrl('/main');
   }
 
   public login(email: string, password: string) {

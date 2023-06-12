@@ -1,8 +1,8 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { QuestionComponent } from "./components/question/question.component";
-import { CreateQuestionComponent } from "./components/create-question/create-question.component";
-import { DeleteQuestionComponent } from "./components/delete-question/delete-question.component";
+import { QuestionComponent } from "./components/welcome-page/question.component";
+import { CreateQuestionComponent } from "./components/constructor/create-question.component";
+import { DeleteQuestionComponent } from "./components/chat/delete-question.component";
 import { NavBarComponent } from "./pages/main-page/nav-bar.component";
 
 const routes: Routes = [

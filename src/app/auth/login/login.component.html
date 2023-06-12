@@ -1,0 +1,10 @@
+<div class="login-page">
+    <p class="text">Авторизация</p>
+
+    <form class="form" [formGroup]="loginForm" (submit)="onLogin()">
+        <input class="form-input" type="email" placeholder="E-mail" formControlName="email">
+        <input class="form-input" type="password" placeholder="Пароль" formControlName="password">
+        <button class="btn">Войти</button>
+    </form>
+    <p (click)="onRegister()" class="auth-switcher">Регистрация</p>
+</div>
