@@ -1,0 +1,29 @@
+.user-container {
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 30px;
+}
+.users {
+    display: flex;
+    margin: 10px;
+}
+
+.users-page{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100vh;
+    justify-content: flex-start;
+    margin-left: 220px;
+    align-items: center;
+}
+
+.header-text {
+    margin-left: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

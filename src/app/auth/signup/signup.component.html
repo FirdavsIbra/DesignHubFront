@@ -2,7 +2,6 @@
     <p class="text">Регистрация</p>
 
     <form class="form" [formGroup]="signupForm" (submit)="onRegister()">
-        <input class="form-input" type="text" placeholder="Ваша организация" formControlName="organization">
         <input class="form-input" type="email" placeholder="E-mail" formControlName="email">
         <input class="form-input" type="password" placeholder="Пароль" formControlName="password">
         <button class="btn">Регистрация</button>

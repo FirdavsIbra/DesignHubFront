@@ -1,0 +1,41 @@
+<div class="constructor">
+    <p class="header-text">Ваша фантазия</p>
+
+    <div class="container">
+        
+        <div class="logo-creator">
+            <div class="first">
+                <div class="picker-container">
+                    <!-- Форма выбора шрифта -->
+                    <label class="label-text">Выберите шрифт:</label>
+                    <select [(ngModel)]="selectedFont">
+                        <option *ngFor="let font of availableFonts">{{ font }}</option>
+                    </select>
+                </div>
+    
+                <div class="picker-container">
+                    <!-- Форма выбора формы -->
+                    <label class="label-text">Выберите форму:</label>
+                    <select [(ngModel)]="selectedShape">
+                        <option *ngFor="let shape of availableShapes">{{ shape }}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="second">
+                <div class="picker-container">
+                    <!-- Форма выбора цвета -->
+                    <label class="label-text">Цветовое решение:</label>
+                    <input style="width: 100%;" type="color" [(ngModel)]="selectedColor">
+                </div>
+    
+                <div class="picker-container">
+                    <!-- Форма выбора стиля -->
+                    <label class="label-text">Стиль:</label>
+                    <select [(ngModel)]="selectedStyle">
+                        <option *ngFor="let style of availableStyles">{{ style }}</option>
+                    </select>
+                </div>
+            </div>
+      </div>
+      <button class="next-button" (click)="onNext()">Далее</button>
+</div>

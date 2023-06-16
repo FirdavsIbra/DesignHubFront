@@ -20,7 +20,6 @@ export class SignupComponent {
   public initLoginForm(): void {
     this.signupForm = new FormGroup({
       email: new FormControl('', [Validators.required]),
-      organization: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required]),
     });
   }

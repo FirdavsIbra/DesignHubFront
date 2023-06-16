@@ -1,0 +1,10 @@
+<div class="header-text">
+    <p>Aдминистратор</p>
+</div>
+<div class="users-page">
+    <div class="users" *ngFor="let user of users">
+        <div class="user-container" (click)="onClick()">
+            <p style="margin: 0;">{{user.username}}</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+.welcome-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.welcome-page-text{
+    font-weight: 600;
+    margin-top: 50px;
+}
+
+.welcome-page-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-input {
+    margin: 15px;
+    height: 35px;
+    width: 500px;
+    padding: 8px;
+}
+
+.btn {
+    width: 500px;
+    height: 35px;
+}

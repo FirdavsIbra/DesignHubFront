@@ -1,9 +1,11 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { QuestionComponent } from "./components/welcome-page/question.component";
-import { CreateQuestionComponent } from "./components/constructor/create-question.component";
-import { DeleteQuestionComponent } from "./components/chat/delete-question.component";
+import { WelcomePageComponent } from "./components/welcome-page/welcome-page.component";
+import { ConstructorComponent } from "./components/constructor/constructor.component";
+import { ChatComponent } from "./components/chat/chat.component";
 import { NavBarComponent } from "./pages/main-page/nav-bar.component";
+import { SketchComponent } from "./components/sketch/sketch.component";
+import { AdminComponent } from "./components/admin/admin.component";
 
 const routes: Routes = [
     {
@@ -11,16 +13,24 @@ const routes: Routes = [
         component: NavBarComponent,
         children: [
             { 
-                path: 'question', 
-                component: QuestionComponent
+                path: 'welcome-page', 
+                component: WelcomePageComponent
             },
             { 
-                path: 'create-question', 
-                component: CreateQuestionComponent
+                path: 'constructor', 
+                component: ConstructorComponent
+            },
+            {
+                path: 'sketch',
+                component: SketchComponent
             },
             { 
-                path: 'delete-question', 
-                component: DeleteQuestionComponent
+                path: 'chat', 
+                component: ChatComponent
+            }, 
+            { 
+                path: 'admin', 
+                component: AdminComponent
             },
         ]
     }

@@ -1,0 +1,39 @@
+<div class="sketch-page">
+    <p class="header-text">Примерные эскизы от дизайнера<br>Выберите макет и мы его доработаем</p>
+    <div class="thumbnails">
+        <div class="first-column">
+            <div class="image-container">
+                <img class="thumbnail" src="../../../../assets/sketches/logo1.png" alt="Логотип 1"
+                    [class.selected]="selectedLogo === 1" (click)="selectLogo(1)">
+            </div>
+
+            <div class="image-container">
+                <img class="thumbnail" src="../../../../assets/sketches/logo2.png" alt="Логотип 2"
+                    [class.selected]="selectedLogo === 2" (click)="selectLogo(2)">
+            </div>
+
+            <div class="image-container">
+                <img class="thumbnail" src="../../../../assets/sketches/logo3.png" alt="Логотип 3"
+                    [class.selected]="selectedLogo === 3" (click)="selectLogo(3)">
+            </div>
+        </div>
+
+        <div class="second-column">
+            <div class="image-container">
+                <img class="thumbnail" src="../../../../assets/sketches/logo4.png" alt="Логотип 4"
+                    [class.selected]="selectedLogo === 4" (click)="selectLogo(4)">
+            </div>
+
+            <div class="image-container">
+                <img class="thumbnail" src="../../../../assets/sketches/logo5.png" alt="Логотип 5"
+                    [class.selected]="selectedLogo === 5" (click)="selectLogo(5)">
+            </div>
+
+            <div class="image-container">
+                <img class="thumbnail" src="../../../../assets/sketches/logo6.png" alt="Логотип 6"
+                    [class.selected]="selectedLogo === 6" (click)="selectLogo(6)">
+            </div>
+        </div>
+        <button class="btn" (click)="uploadLogo()">Сохранить</button>
+    </div>
+</div>

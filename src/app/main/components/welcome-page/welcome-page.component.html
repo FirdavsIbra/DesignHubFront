@@ -1,0 +1,11 @@
+<div class="welcome-page">
+    <p class="welcome-page-text">Введите данные для создания логотипа</p>
+
+    <form class="welcome-page-form" [formGroup]="form" (submit)="onSave()">
+        <input class="form-input" type="text" placeholder="Название вашей компании." formControlName="company_name">
+        <input class="form-input" type="text" placeholder="Опишите деятельность компании." formControlName="description">
+        <input class="form-input" type="text" placeholder="Расскажите уникальность вашей компании." formControlName="uniqueness">
+        <input class="form-input" type="text" placeholder="Какое представление о логотипе у вас имеется?" formControlName="logo_concept">
+        <button class="btn">Сохранить</button>
+    </form>
+</div>
