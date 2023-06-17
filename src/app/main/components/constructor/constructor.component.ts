@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { RequestService } from '../../services/request.service';
+import { IGetMe } from 'src/app/models/getMe';
 
 @Component({
   selector: 'app-create-question',
@@ -14,20 +14,19 @@ export class ConstructorComponent {
   selectedStyle!: string;
 
   availableFonts: string[] = ['Arial', 'Helvetica', 'Times New Roman', 'Verdana'];
-  availableShapes: string[] = ['Circle', 'Square', 'Triangle'];
+  availableShapes: string[] = ['Круг', 'Квадрат', 'Треугольник', 'Ромб'];
   availableStyles: string[] = ['Bold', 'Italic', 'Underline'];
 
-  public constructor(private router: Router, private requestService: RequestService) { }
+  public constructor(private requestService: RequestService) { }
 
   public onNext(): void {
-    const selectedValues = {
-      font: this.selectedFont,
-      shape: this.selectedShape,
-      color: this.selectedColor,
-      style: this.selectedStyle
-    };
-    
-    console.log(selectedValues);
-    this.requestService.addDesign(1, this.selectedFont, this.selectedColor, this.selectedStyle, this.selectedShape);
+    this.requestService.getMe().subscribe({
+      next: (response: IGetMe) => {
+        this.requestService.addDesign(response.id, this.selectedFont, this.selectedShape, this.selectedColor, this.selectedStyle);
+      },
+      error: (error: any) => {
+        console.log(error);
+      }
+    });
   }
 }

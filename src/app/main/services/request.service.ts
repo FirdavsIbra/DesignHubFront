@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { Observable } from "rxjs";
@@ -9,6 +9,19 @@ import { API_URL } from "src/app/constants/api.url";
 })
 export class RequestService {
     public constructor(private http: HttpClient, private router: Router) { }
+
+    public addSketch(_userId: number, _filePath: string){
+        const apiUrl = `${API_URL}sketches`;
+        const sketch = {
+            userId : _userId,
+            filePath: _filePath
+        };
+        this.http.post(apiUrl, sketch).subscribe({
+            next: (response: any) => {
+                this.router.navigateByUrl('main/chat');
+            }
+        })
+    }
 
     public addCompany(_userId: number, _name: string, _description: string, _uniqueness: string, _logoConcept: string): void {
         const apiUrl = `${API_URL}company`;
@@ -21,7 +34,6 @@ export class RequestService {
         };
         this.http.post(apiUrl, company).subscribe({
             next: (reponse: any) => {
-                console.log(reponse);
                 this.router.navigateByUrl('main/constructor')
             } 
         });
@@ -44,7 +56,7 @@ export class RequestService {
             },
             error: (error: any) => {
                 console.log(error);
-                alert("Please enter all field")
+                alert("Пожалуйста выберите всё")
             }
         })
     }
@@ -56,6 +68,32 @@ export class RequestService {
 
     public getAllUsers(): Observable<any> {
         const apiUrl = `${API_URL}users`;
+        return this.http.get(apiUrl);
+    }
+
+    public getMe(): Observable<any> {
+        const token = localStorage.getItem('token');
+        const apiUrl = `${API_URL}auth/getMe`;
+
+        const headers = new HttpHeaders({
+            'Authorization': `Bearer ${token}`
+          });
+        
+        return this.http.get(apiUrl, { headers });
+    }
+
+    public getSketchByUserId(userId: number){
+        const apiUrl = `${API_URL}sketches/${userId}`;
+        return this.http.get(apiUrl);
+    }
+
+    public getDesignByUserId(userId: number){
+        const apiUrl = `${API_URL}design/${userId}`;
+        return this.http.get(apiUrl);
+    }
+
+    public getUsernameById(userId: number){
+        const apiUrl = `${API_URL}users/${userId}`;
         return this.http.get(apiUrl);
     }
 }

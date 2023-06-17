@@ -6,6 +6,7 @@ import { ChatComponent } from "./components/chat/chat.component";
 import { NavBarComponent } from "./pages/main-page/nav-bar.component";
 import { SketchComponent } from "./components/sketch/sketch.component";
 import { AdminComponent } from "./components/admin/admin.component";
+import { UserInfoComponent } from "./components/user-info/user-info.component";
 
 const routes: Routes = [
     {
@@ -29,8 +30,11 @@ const routes: Routes = [
                 component: ChatComponent
             }, 
             { 
-                path: 'admin', 
-                component: AdminComponent
+                path: 'admin',
+                component: AdminComponent,
+                children: [
+                    { path: ':userId', component: UserInfoComponent }
+                ]
             },
         ]
     }

@@ -8,6 +8,7 @@ import { MainRoutingModule } from './main-rounting.module';
 import { NavBarComponent } from './pages/main-page/nav-bar.component';
 import { SketchComponent } from './components/sketch/sketch.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { UserInfoComponent } from './components/user-info/user-info.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { AdminComponent } from './components/admin/admin.component';
     ChatComponent,
     NavBarComponent,
     SketchComponent,
-    AdminComponent
+    AdminComponent,
+    UserInfoComponent
   ],
   imports: [
     CommonModule,

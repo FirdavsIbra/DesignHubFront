@@ -1,0 +1,20 @@
+<div class="user-info">
+    <p class="text">Клиент: {{this.username}}</p>
+    
+    <p class="text">Компания: {{this.company?.name}}</p>
+    <p class="text">Описание компании: {{this.company?.description}}</p>
+    <p class="text">Уникальность компании: {{this.company?.uniqueness}}</p>
+    <p class="text">Концепция лого: {{this.company?.logoConcept}}</p>
+    <p class="text">Шрифт лого: {{this.design?.font}}</p>
+
+    <p class="text">Стиль лого: {{this.design?.style}}</p>
+    <p class="text">Цвет лого: {{this.design?.color}}</p>
+    <p class="text">Форма лого: {{this.design?.form}}</p>
+
+    <p class="img-container">
+        Эскиз:
+        <img class="img" src="{{this.sketch?.filePath}}">
+    </p>
+</div>
+
+<button style="width: 100px; height: 35px;" routerLink="/main/admin">Назад</button>

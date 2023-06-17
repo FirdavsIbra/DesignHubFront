@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { RequestService } from '../../services/request.service';
+import { IGetMe } from 'src/app/models/getMe';
 
 @Component({
   selector: 'app-question',
@@ -32,7 +33,19 @@ export class WelcomePageComponent implements OnInit{
     const description = this.form.controls['description'].value;
     const uniqueness = this.form.controls['uniqueness'].value;
     const logo_concept = this.form.controls['logo_concept'].value;
+
+    if(company_name.length <= 0 ||description.length <= 0 ||uniqueness.length <= 0 ||logo_concept.length <= 0){
+      alert("Пожалуйста заполните все поля");
+      return;
+    }
     
-    this.requestService.addCompany(1, company_name, description, uniqueness, logo_concept);
+    this.requestService.getMe().subscribe({
+      next: (response: IGetMe) => {
+        this.requestService.addCompany(response.id, company_name, description, uniqueness, logo_concept);
+      },
+      error: (error: any) => {
+        console.log(error);
+      }
+    });
   }
 }

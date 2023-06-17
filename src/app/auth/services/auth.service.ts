@@ -17,12 +17,12 @@ export class AuthService {
 
     this.http.post(apiUrl, null).subscribe({
       next: (response: any) => {
-        console.log(response);
-        this.router.navigateByUrl('/main');
+        alert("Профиль успешно создан. Залогиньтесь этими кредами")
+        this.router.navigateByUrl('/login');
       },
       error: (error: any) => {
         console.error(error);
-        alert("This username already taken.");
+        alert("Что то пошло не так. Попробуйте заново");
       }
     });
   }
@@ -34,11 +34,11 @@ export class AuthService {
       next: (response: any) => {
         const token = response.token;
         localStorage.setItem('token', token);
-        this.router.navigateByUrl('/main');
+        this.router.navigateByUrl('/main/welcome-page');
       },
       error: (error: any) => {
         console.error(error);
-        alert("Username or password is invalid.");
+        alert("E-mail или пароль не верны.");
       }
     })
   }

@@ -1,10 +1,19 @@
-<div class="header-text">
-    <p>Aдминистратор</p>
-</div>
-<div class="users-page">
-    <div class="users" *ngFor="let user of users">
-        <div class="user-container" (click)="onClick()">
-            <p style="margin: 0;">{{user.username}}</p>
+
+<div *ngIf="getRoute()">
+    <div class="header-text">
+        <p style="font-weight: bold; margin-top: 20px;">Aдминистратор</p>
+    </div>
+    <div class="users-page">
+        <div class="users" *ngFor="let user of users">
+            <div class="user-container" routerLink="../admin/{{user.id}}">
+                <p style="margin: 0;">{{user.username}}</p>
+            </div>
         </div>
     </div>
+</div>
+
+
+
+<div class="admin-content">
+    <router-outlet></router-outlet>
 </div>

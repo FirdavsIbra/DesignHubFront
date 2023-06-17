@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { RequestService } from '../../services/request.service';
+import { IGetMe } from 'src/app/models/getMe';
 
 @Component({
   selector: 'app-sketch',
@@ -10,7 +11,7 @@ export class SketchComponent {
   public selectedLogo!: number;
   selectedImage: string | null = null;
 
-  public constructor(private router: Router) { }
+  public constructor(private requestService: RequestService) { }
 
   public selectLogo(logoNumber: number): string {
     this.selectedLogo = logoNumber;
@@ -27,13 +28,23 @@ export class SketchComponent {
         return "../../../../assets/sketches/logo5.png";
       case 6:
         return "../../../../assets/sketches/logo6.png";
-      default: return 'image not found'
+      default: return 'Картинка не найдена'
     }
   }
 
-  uploadLogo() {
-    console.log(this.selectedLogo);
-    console.log(this.selectLogo(this.selectedLogo))
-    this.router.navigateByUrl('main/chat');
+  public uploadLogo(): void {
+    const file_path = this.selectLogo(this.selectedLogo);
+    if(file_path === "Картинка не найдена"){
+      alert("Пожалуйста выберите эскиз.");
+      return;
+    }
+    this.requestService.getMe().subscribe({
+      next: (response: IGetMe) => {
+        this.requestService.addSketch(response.id, file_path);
+      },
+      error: (error: any) => {
+        console.log(error);
+      }
+    });
   }
 }
