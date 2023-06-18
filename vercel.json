@@ -1,0 +1,15 @@
+{
+    "builds": [
+      {
+        "src": "angular.json",
+        "use": "@vercel/static-build",
+        "config": {
+          "devCommand": "npm run build",
+          "outputDirectory": "dist/quiz-application"
+        }
+      }
+    ],
+    "routes": [
+      { "src": "/(.*)", "dest": "/index.html" }
+    ]
+  }
