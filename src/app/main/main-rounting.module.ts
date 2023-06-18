@@ -7,6 +7,7 @@ import { NavBarComponent } from "./pages/main-page/nav-bar.component";
 import { SketchComponent } from "./components/sketch/sketch.component";
 import { AdminComponent } from "./components/admin/admin.component";
 import { UserInfoComponent } from "./components/user-info/user-info.component";
+import { FileUploadComponent } from "./components/file-upload/file-upload.component";
 
 const routes: Routes = [
     {
@@ -36,6 +37,10 @@ const routes: Routes = [
                     { path: ':userId', component: UserInfoComponent }
                 ]
             },
+            {
+                path: 'gallery',
+                component: FileUploadComponent
+            }
         ]
     }
 ]

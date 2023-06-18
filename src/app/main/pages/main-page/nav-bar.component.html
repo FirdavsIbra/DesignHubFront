@@ -17,21 +17,21 @@
             <div class="menu">
     
                 <ul class="menu-links">
-                    <li class="nav-link">
+                    <li *ngIf="this.id !== 1" class="nav-link">
                         <a routerLink="./welcome-page">
                             <i class='bx bx-smile icon' ></i>
                             <span class="text nav-text">Приветствие</span>
                         </a>
                     </li>
     
-                    <li class="nav-link">
+                    <li *ngIf="this.id !== 1" class="nav-link">
                         <a routerLink="./constructor">
                             <i class='bx bx-brush icon'></i>
                             <span class="text nav-text">Ваша фантазия</span>
                         </a>
                     </li>
 
-                    <li class="nav-link">
+                    <li *ngIf="this.id !== 1" class="nav-link">
                         <a routerLink="./sketch">
                             <i class='bx bx-pencil icon' ></i>
                             <span class="text nav-text">Эскизы</span>
@@ -45,10 +45,17 @@
                         </a>
                     </li>
 
-                    <li class="nav-link">
+                    <li *ngIf="this.id === 1" class="nav-link">
                         <a routerLink="./admin">
                             <i class='bx bx-user  icon' ></i>
                             <span class="text nav-text">Админка</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a routerLink="./gallery">
+                            <i class='bx bx-pencil icon' ></i>
+                            <span class="text nav-text">Отправка фото</span>
                         </a>
                     </li>
                 </ul>

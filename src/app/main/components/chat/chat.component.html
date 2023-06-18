@@ -1,17 +1,25 @@
-<div class="chat-window">
-    <div class="chat-message-list">
-      <div *ngFor="let message of messages" class="message-item">
-        <div class="message-body" >
-          <p>{{ message.message }}</p>
-          <span class="timestamp">{{ message.timestamp | date:'h:mm a' }}</span>
+<div class="chat-page">
+    <div *ngIf="this.userId === 1" class="users">
+        <div *ngFor="let user of users" class="user" [class.selected]="user.id === selectedUserId" (click)="onUserClick(user.id)">
+            <p class="user-name">{{user.username}}</p>
         </div>
-      </div>
     </div>
-    <div class="chat-input">
-      <div class="input-container">
-        <input type="text" [(ngModel)]="inputMessage" placeholder="Type your message..." (keyup.enter)="sendMessage()">
-        <button (click)="sendMessage()">
-        </button>
-      </div>
+    <div class="chat-window">
+        <div class="chat-message-list">
+          <div *ngFor="let message of messages" class="message-item" [class.blue-message]="message.senderId === 1">
+            <div class="message-body">
+                <p>{{ message.message }}</p>
+                <!-- <span class="timestamp">{{ message.timestamp | date:'h:mm a' }}</span> -->
+            </div>
+          </div>
+        </div>
+        <div class="chat-input">
+          <div class="input-container">
+            <input type="text" [(ngModel)]="inputMessage" placeholder="Type your message..." (keyup.enter)="sendMessage()">
+            <!-- <input type="file" (change)="onFileSelected($event)" accept="image/*"> -->
+            <button (click)="sendMessage()">
+            </button>
+          </div>
+        </div>
     </div>
-  </div>
+</div>

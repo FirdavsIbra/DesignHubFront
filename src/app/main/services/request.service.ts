@@ -96,4 +96,40 @@ export class RequestService {
         const apiUrl = `${API_URL}users/${userId}`;
         return this.http.get(apiUrl);
     }
+
+    public addMessage(_message: string, _receiverId: number, _timestamp: string) {
+        const apiUrl = `${API_URL}chat`;
+        const token = localStorage.getItem('token');
+        const body = {
+            Message: _message,
+            RecieverId: _receiverId,
+            Date: _timestamp
+        }
+        const headers = new HttpHeaders({
+            'Authorization': `Bearer ${token}`
+          });
+          console.log(body);
+        
+        return this.http.post(apiUrl, body, { headers })
+    }
+
+    public getAllMessages() {
+        const apiUrl = `${API_URL}chat/messages`;
+        return this.http.get(apiUrl);
+    }
+    
+    public getAllMessagesByRecieverId(id: number) {
+        const apiUrl = `${API_URL}chat/messages/${id}`;
+        return this.http.get(apiUrl);
+    }
+
+    public getAllMessagesByRecieverAndSenderId(recieverId: number, senderId: number) {
+        const apiUrl = `${API_URL}chat/messages/getByIds?recieverId=${recieverId}&senderId=${senderId}`;
+        return this.http.get(apiUrl);
+    }
+
+    public uploadFile(formData: FormData): Observable<any> {
+        const apiUrl = `${API_URL}/upload`; // Replace with your actual API endpoint for file upload
+        return this.http.post(apiUrl, formData);
+    }
 }

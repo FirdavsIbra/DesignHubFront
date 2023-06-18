@@ -9,6 +9,7 @@ import { NavBarComponent } from './pages/main-page/nav-bar.component';
 import { SketchComponent } from './components/sketch/sketch.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { UserInfoComponent } from './components/user-info/user-info.component';
+import { FileUploadComponent } from './components/file-upload/file-upload.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { UserInfoComponent } from './components/user-info/user-info.component';
     NavBarComponent,
     SketchComponent,
     AdminComponent,
-    UserInfoComponent
+    UserInfoComponent,
+    FileUploadComponent
   ],
   imports: [
     CommonModule,

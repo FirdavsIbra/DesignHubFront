@@ -3,7 +3,7 @@ import { RequestService } from '../../services/request.service';
 import { IGetMe } from 'src/app/models/getMe';
 
 @Component({
-  selector: 'app-create-question',
+  selector: 'app-constructor',
   templateUrl: './constructor.component.html',
   styleUrls: ['./constructor.component.css']
 })

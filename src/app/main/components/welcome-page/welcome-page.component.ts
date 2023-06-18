@@ -4,7 +4,7 @@ import { RequestService } from '../../services/request.service';
 import { IGetMe } from 'src/app/models/getMe';
 
 @Component({
-  selector: 'app-question',
+  selector: 'app-welcome-page',
   templateUrl: './welcome-page.component.html',
   styleUrls: ['./welcome-page.component.css']
 })
