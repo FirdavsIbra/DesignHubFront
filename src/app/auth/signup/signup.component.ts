@@ -28,6 +28,11 @@ export class SignupComponent {
     const email = this.signupForm.controls['email'].value;
     const password = this.signupForm.controls['password'].value;
 
+    if(password.length < 8) {
+      alert('Пароль должен иметь как минимум 8 символов.');
+      return;
+    }
+
     this.authService.register(email, password);
   }
 

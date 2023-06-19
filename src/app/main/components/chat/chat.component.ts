@@ -141,21 +141,4 @@ export class ChatComponent implements OnInit {
   private sortMessagesByTimestamp() {
     this.messages.sort((a, b) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime());
   }
-
-  public onFileSelected(event: any): void {
-    const file: File = event.target.files[0];
-    const formData: FormData = new FormData();
-    formData.append('file', file, file.name);
-  
-    // Send the form data to the server using an HTTP request
-    this.requestService.uploadFile(formData).subscribe(
-      (response: any) => {
-        // Handle the response from the server
-        console.log('File uploaded successfully:', response);
-      },
-      (error: any) => {
-        console.log('Error uploading file:', error);
-      }
-    );
-  }
 }

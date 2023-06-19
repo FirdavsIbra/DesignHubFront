@@ -36,10 +36,6 @@ const routes: Routes = [
                 children: [
                     { path: ':userId', component: UserInfoComponent }
                 ]
-            },
-            {
-                path: 'gallery',
-                component: FileUploadComponent
             }
         ]
     }
